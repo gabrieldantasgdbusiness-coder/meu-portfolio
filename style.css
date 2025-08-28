@@ -1,0 +1,288 @@
+/* Estilos Gerais */
+body {
+    font-family: Montserrat, Montserrat;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #ECF0F1; /* Fundo cinza-claro quase branco */
+    color: #202433;
+}
+
+.container {
+    font-size: 4.5mm;
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    overflow: hidden;
+    padding: 20px;
+    background: #E5E5E5
+    
+
+
+;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Estilos do Cabeçalho */
+header {
+    text-align: center;
+    padding: 40px 0 10px; /* Adiciona mais espaço no topo e menos na parte de baixo */
+}
+
+header h1 {
+    font-size: 10.0mm; /* Aumentar o tamanho da fonte */
+    color: #34495E; /* Cor da sua paleta, para destacar a marca */
+    letter-spacing: 2px; /* Adiciona espaçamento entre as letras */
+    margin: 0; /* Remove a margem padrão para não ter espaço extra */
+}
+
+/* Estilos da Barra de Navegação */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Adiciona um pouco mais de espaço entre os links */
+    margin-bottom: 20px;
+    background: #34495E;
+    padding: 15px 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #4F6DF0;
+}
+
+/* Estilos da Seção Principal */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 50px 0;
+    animation: fadeIn 1s ease-out;
+}
+
+/* O contêiner principal para o efeito 3D */
+.photo-container {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+    border-radius: 50%;
+    overflow: hidden; /* **Mantém o corte circular e esconde o que está fora** */
+    margin: 20px auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border: 5px solid #34495E;
+}
+
+/* As faces da imagem (as duas imagens) */
+.photo-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    left: 0;
+    top: 0;
+}
+
+/* A imagem da frente (não é necessário transformá-la) */
+.front-face {
+    transform: rotateY(0deg);
+}
+
+/* A imagem de trás */
+.back-face {
+    transform: rotateY(180deg);
+}
+
+/* Animação de rotação */
+@keyframes spin360 {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Aplica a animação ao passar o mouse */
+.photo-container:hover {
+    animation: spin360 2s linear infinite;
+}
+
+/* Estilos do botão de contato */
+.btn-contato {
+    display: inline-block;
+    background-color: #00BCD4;
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-top: 15px; /* Espaço entre a foto e o botão */
+    transition: all 0.3s ease; /* Transição para o efeito suave */
+}
+
+/* Efeito ao passar o mouse */
+.btn-contato:hover {
+    background-color: #4F6DF0;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito de transição suave para a barra de navegação */
+nav a {
+    transition: color 0.3s ease; /* Transição para a cor do texto */
+}
+
+nav a:hover {
+    color: #4F6DF0; /* Muda a cor no hover para dar um efeito de destaque */
+}
+
+/* Estilo para o conteúdo da página "Sobre Mim" */
+.sobre-content {
+    text-align: justify; /* Alinha o texto de forma justificada */
+    max-width: 800px; /* Limita a largura do texto para não ficar muito esticado */
+    margin: 40px auto; /* Centraliza o bloco de texto dentro do container */
+    padding: 20px;
+    background-color: #f9f9f9; /* Uma cor de fundo um pouco diferente para o conteúdo */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+}
+
+.sobre-content h1 {
+    color: #2643C7;
+    margin-bottom: 25px;
+    text-align: center; /* Centraliza o título */
+    font-size: 2.2em;
+}
+
+.sobre-content p {
+    color: #444; /* Cor de texto mais escura para melhor leitura */
+    line-height: 1.8; /* Aumenta o espaçamento entre as linhas */
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.projetos-content,
+.contato-content {
+    text-align: justify;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.projetos-content h1,
+.contato-content h1 {
+    color: #2643C7;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 2.2em;
+}
+
+.projetos-content p,
+.contato-content p {
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+/* Estilo para os links da seção de contato */
+.contact-links {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-links a {
+    display: inline-block;
+    background-color: #2643C7;
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.contact-links a:hover {
+    background-color: #4F6DF0;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para a grade de projetos */
+.projects-grid {
+    display: flex; /* Transforma o contêiner em flexbox */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center; /* Alinha os itens no centro */
+    gap: 30px; /* Adiciona espaçamento entre os projetos */
+    margin-top: 40px;
+}
+
+/* Estilo para cada item de projeto */
+.project-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 300px; /* Largura fixa para cada item */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px); /* Efeito de elevação no hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.project-item h3 {
+    color: #2643C7;
+    margin-bottom: 10px;
+}
+
+/* Estilo para o botão "Ver Projeto" */
+.btn-projeto {
+    display: inline-block;
+    background-color: #2643C7;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-projeto:hover {
+    background-color: #4F6DF0;
+}
+
+/* Espaço entre o ícone e o texto nos links de contato */
+.contact-links a i {
+    margin-right: 8px; /* Adiciona um espaço à direita do ícone */
+}
