@@ -1,297 +1,358 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriel Dantas | G&D Tech</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel Dantas — Desenvolvedor</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
 
-    <canvas id="starfield"></canvas>
+  <!-- Campo estelar -->
+  <canvas id="stars"></canvas>
 
-    <!-- HEADER -->
-    <header id="header">
-        <div class="header-inner">
-            <div class="logo">
-                <span class="logo-g">G</span><span class="logo-amp">&amp;</span><span class="logo-d">D</span>
-                <span class="logo-tech">TECH</span>
-            </div>
-            <nav>
-                <a href="#hero">Início</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#habilidades">Habilidades</a>
-                <a href="#projetos">Projetos</a>
-                <a href="#contato">Contato</a>
-            </nav>
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
-                <i class="fas fa-bars"></i>
-            </button>
+  <!-- Ruído de circuito decorativo -->
+  <div class="circuit-bg" aria-hidden="true">
+    <div class="c-line c-l1"></div>
+    <div class="c-line c-l2"></div>
+    <div class="c-line c-l3"></div>
+    <div class="c-dot c-d1"></div>
+    <div class="c-dot c-d2"></div>
+    <div class="c-dot c-d3"></div>
+  </div>
+
+  <!-- ═══════ HEADER ═══════ -->
+  <header id="site-header">
+    <div class="hd-inner">
+      <a href="#inicio" class="brand">
+        <span class="brand-star">✦</span>
+        <span class="brand-name">Gabriel<span class="brand-accent">Dantas</span></span>
+      </a>
+
+      <nav id="main-nav">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <a href="https://wa.me/5519989660638?text=Ol%C3%A1!%20Vim%20pelo%20portf%C3%B3lio!"
+         class="hd-cta" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Fale comigo
+      </a>
+
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section id="inicio" class="hero">
+    <div class="hero-wrap">
+
+      <div class="hero-text">
+        <p class="hero-pre">
+          <span class="pre-dot"></span> Disponível para projetos
+        </p>
+        <h1 class="hero-title">
+          Gabriel<br>
+          <span class="glitch" data-text="Dantas">Dantas</span>
+        </h1>
+        <p class="hero-role">Analista &amp; Desenvolvedor de Sistemas</p>
+        <p class="hero-desc">
+          Crio sites modernos e automatizo processos repetitivos —
+          transformando sua ideia em tecnologia que realmente funciona.
+        </p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5519989660638?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento!"
+             class="btn btn-primary" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Pedir orçamento
+          </a>
+          <a href="#servicos" class="btn btn-ghost">Ver serviços</a>
         </div>
-    </header>
+        <div class="hero-badges">
+          <span><i class="fas fa-code"></i> Sites</span>
+          <span><i class="fas fa-robot"></i> Automação</span>
+          <span><i class="fab fa-python"></i> Python</span>
+          <span><i class="fab fa-js"></i> JavaScript</span>
+        </div>
+      </div>
 
-    <!-- HERO -->
-    <section id="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <p class="hero-greeting">Olá, eu sou</p>
-                <h1 class="hero-name">
-                    Gabriel<br>
-                    Dantas <span class="highlight">Porteiro</span>
-                </h1>
-                <p class="hero-title">Analista &amp; Desenvolvedor de Sistemas</p>
-                <p class="hero-desc">
-                    Transformo sua visão em um site funcional e elegante — com base sólida,
-                    feito para funcionar sem dores de cabeça e garantindo o melhor resultado
-                    para o seu negócio.
-                </p>
-                <div class="hero-btns">
-                    <a href="https://wa.me/5519989660638?text=Ol%C3%A1!%20Vim%20pelo%20portf%C3%B3lio%20e%20gostaria%20de%20conversar!"
-                       class="btn-primary" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Vamos Conversar!
-                    </a>
-                    <a href="#servicos" class="btn-secondary">Ver Serviços</a>
-                </div>
-            </div>
+      <div class="hero-visual">
+        <div class="av-ring av-r3"></div>
+        <div class="av-ring av-r2"></div>
+        <div class="av-ring av-r1"></div>
+        <div class="av-wrap">
+          <div class="av-photo">
+            <img src="foto.jpg.JPG" alt="Gabriel Dantas" />
+          </div>
+          <div class="av-glow"></div>
+        </div>
+        <!-- Chips de circuito flutuantes -->
+        <div class="chip chip-js"><i class="fab fa-js-square"></i></div>
+        <div class="chip chip-py"><i class="fab fa-python"></i></div>
+        <div class="chip chip-html"><i class="fab fa-html5"></i></div>
+        <div class="chip chip-auto"><i class="fas fa-robot"></i></div>
+      </div>
 
-            <div class="hero-photo">
-                <div class="photo-ring">
-                    <div class="orbit orbit-1"></div>
-                    <div class="orbit orbit-2"></div>
-                    <div class="photo-container">
-                        <img src="foto.jpg.JPG" alt="Gabriel Dantas Porteiro" class="front-face">
-                        <img src="foto.jpg.JPG" alt="Gabriel Dantas Porteiro" class="back-face">
-                    </div>
-                </div>
-            </div>
+    </div>
+
+    <a href="#sobre" class="scroll-down" aria-label="Rolar para baixo">
+      <span class="sd-line"></span>
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- ═══════ SOBRE ═══════ -->
+  <section id="sobre">
+    <div class="sec-inner">
+      <div class="sec-tag">
+        <span class="tag-dot"></span> Quem sou eu
+      </div>
+      <h2 class="sec-title">Sobre <span class="acc">Mim</span></h2>
+
+      <div class="sobre-layout">
+        <div class="sobre-body">
+          <p>
+            Tenho 22 anos e estudo Análise e Desenvolvimento de Sistemas.
+            Minha paixão é transformar ideias em soluções digitais reais —
+            seja um site completo ou um script que economiza horas de trabalho manual.
+          </p>
+          <p>
+            Antes da tecnologia, trabalhei com vendas: aprendi a entender o que o
+            cliente precisa de verdade, comunicar com clareza e entregar resultados.
+            Levo isso para cada projeto.
+          </p>
+          <p>
+            Domino JavaScript, Python, C++ e C#, e estou sempre aprendendo.
+            Além do código, tenho uma paixão de longa data pelo mundo automotivo.
+          </p>
+          <a href="https://wa.me/5519989660638" class="btn btn-primary" target="_blank" rel="noopener">
+            <i class="fas fa-paper-plane"></i> Entre em contato
+          </a>
         </div>
 
-        <div class="scroll-hint">
-            <span class="scroll-line"></span>
-            <span class="scroll-label">scroll</span>
+        <div class="sobre-nums">
+          <div class="num-card">
+            <span class="num-val">4<span class="num-plus">+</span></span>
+            <span class="num-label">Linguagens</span>
+          </div>
+          <div class="num-card">
+            <span class="num-val">2</span>
+            <span class="num-label">Serviços</span>
+          </div>
+          <div class="num-card">
+            <span class="num-val">∞</span>
+            <span class="num-label">Dedicação</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- SOBRE -->
-    <section id="sobre">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Sobre <span class="highlight">Mim</span></h2>
-                <div class="section-line"></div>
-            </div>
+  <!-- ═══════ SERVIÇOS ═══════ -->
+  <section id="servicos" class="sec-alt">
+    <div class="sec-inner">
+      <div class="sec-tag">
+        <span class="tag-dot"></span> O que eu faço
+      </div>
+      <h2 class="sec-title">Meus <span class="acc">Serviços</span></h2>
 
-            <div class="sobre-grid">
-                <div class="sobre-text">
-                    <p>
-                        Gabriel Dantas, 22 anos, estudante de Análise e Desenvolvimento de Sistemas
-                        com paixão por tecnologia e por transformar ideias em realidade.
-                    </p>
-                    <p>
-                        Minha jornada é marcada pela curiosidade e busca constante por desafios —
-                        valores aprimorados durante minha experiência em vendas. Sou comunicativo
-                        e sempre em busca de crescimento.
-                    </p>
-                    <p>
-                        Com conhecimento em JavaScript, Python, C++ e C#, busco sempre criar
-                        soluções funcionais, intuitivas e agradáveis de usar.
-                    </p>
-                </div>
+      <div class="srv-grid">
 
-                <div class="sobre-stats">
-                    <div class="stat-card">
-                        <span class="stat-num">4+</span>
-                        <span class="stat-label">Linguagens</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-num">2</span>
-                        <span class="stat-label">Serviços</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-num">∞</span>
-                        <span class="stat-label">Dedicação</span>
-                    </div>
-                </div>
-            </div>
+        <!-- Card 1 -->
+        <div class="srv-card">
+          <div class="srv-num">01</div>
+          <div class="srv-icon-wrap">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>Criação de Sites</h3>
+          <p>
+            Desenvolvo sites do zero: desde a identidade visual até o deploy.
+            Foco em design limpo, carregamento rápido e código organizado.
+          </p>
+          <ul>
+            <li><i class="fas fa-check"></i> Layout responsivo para qualquer tela</li>
+            <li><i class="fas fa-check"></i> Performance e velocidade otimizadas</li>
+            <li><i class="fas fa-check"></i> Código limpo e de fácil manutenção</li>
+            <li><i class="fas fa-check"></i> Integração com WhatsApp e redes sociais</li>
+          </ul>
+          <a href="https://wa.me/5519989660638?text=Ol%C3%A1!%20Quero%20um%20site!" class="srv-btn" target="_blank" rel="noopener">
+            Solicitar orçamento <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
-    </section>
 
-    <!-- SERVIÇOS -->
-    <section id="servicos">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Meus <span class="highlight">Serviços</span></h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="servicos-grid">
-                <div class="servico-card">
-                    <div class="servico-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Criação de Sites</h3>
-                    <p>
-                        Desenvolvo sites modernos, responsivos e funcionais para o seu negócio —
-                        do layout ao deploy, com foco em performance e experiência do usuário.
-                    </p>
-                    <ul class="servico-features">
-                        <li><i class="fas fa-check-circle"></i> Design responsivo e moderno</li>
-                        <li><i class="fas fa-check-circle"></i> Alta performance e velocidade</li>
-                        <li><i class="fas fa-check-circle"></i> SEO e boas práticas web</li>
-                    </ul>
-                    <a href="https://wa.me/5519989660638?text=Ol%C3%A1!%20Quero%20um%20site!" class="btn-servico" target="_blank">
-                        Solicitar Orçamento
-                    </a>
-                </div>
-
-                <div class="servico-card featured">
-                    <div class="featured-badge">
-                        <i class="fas fa-star"></i> Popular
-                    </div>
-                    <div class="servico-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Automação</h3>
-                    <p>
-                        Automatizo processos repetitivos do seu negócio usando Python e outras
-                        ferramentas — economizando tempo, reduzindo erros e aumentando produtividade.
-                    </p>
-                    <ul class="servico-features">
-                        <li><i class="fas fa-check-circle"></i> Automação de tarefas manuais</li>
-                        <li><i class="fas fa-check-circle"></i> Bots, scripts e relatórios</li>
-                        <li><i class="fas fa-check-circle"></i> Integração entre sistemas</li>
-                    </ul>
-                    <a href="https://wa.me/5519989660638?text=Ol%C3%A1!%20Quero%20automatizar%20processos!" class="btn-servico" target="_blank">
-                        Solicitar Orçamento
-                    </a>
-                </div>
-            </div>
+        <!-- Card 2 -->
+        <div class="srv-card srv-featured">
+          <div class="srv-badge"><i class="fas fa-star"></i> Mais pedido</div>
+          <div class="srv-num">02</div>
+          <div class="srv-icon-wrap">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3>Automação</h3>
+          <p>
+            Crio scripts e bots que eliminam tarefas manuais repetitivas.
+            Você faz em segundos o que antes levava horas.
+          </p>
+          <ul>
+            <li><i class="fas fa-check"></i> Automação de planilhas e relatórios</li>
+            <li><i class="fas fa-check"></i> Bots para WhatsApp, e-mail e redes sociais</li>
+            <li><i class="fas fa-check"></i> Integração entre ferramentas e APIs</li>
+            <li><i class="fas fa-check"></i> Scripts Python para qualquer processo</li>
+          </ul>
+          <a href="https://wa.me/5519989660638?text=Ol%C3%A1!%20Quero%20automatizar%20meus%20processos!" class="srv-btn" target="_blank" rel="noopener">
+            Solicitar orçamento <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
-    </section>
 
-    <!-- HABILIDADES -->
-    <section id="habilidades">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Minhas <span class="highlight">Habilidades</span></h2>
-                <div class="section-line"></div>
-            </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fab fa-js-square"></i>
-                    <span>JavaScript</span>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-python"></i>
-                    <span>Python</span>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-code"></i>
-                    <span>C++</span>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-hashtag"></i>
-                    <span>C#</span>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-html5"></i>
-                    <span>HTML5</span>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-css3-alt"></i>
-                    <span>CSS3</span>
-                </div>
-            </div>
+  <!-- ═══════ HABILIDADES ═══════ -->
+  <section id="habilidades">
+    <div class="sec-inner">
+      <div class="sec-tag">
+        <span class="tag-dot"></span> Meu arsenal
+      </div>
+      <h2 class="sec-title">Habilidades <span class="acc">Técnicas</span></h2>
+
+      <div class="skills-grid">
+        <div class="sk-card">
+          <i class="fab fa-js-square"></i>
+          <strong>JavaScript</strong>
+          <span>Web & automação</span>
         </div>
-    </section>
-
-    <!-- PROJETOS -->
-    <section id="projetos">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Meus <span class="highlight">Projetos</span></h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="portfolio-screenshot.png.png" alt="G&D Tech Portfolio">
-                        <div class="project-overlay">
-                            <a href="#hero" class="btn-project">
-                                <i class="fas fa-eye"></i> Ver Projeto
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Portfólio G&amp;D Tech</h3>
-                        <p>Site portfólio desenvolvido com HTML, CSS e JavaScript. Design Star Tech com animações, efeitos de brilho e campo estelar animado.</p>
-                        <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card coming-soon">
-                    <div class="coming-soon-inner">
-                        <i class="fas fa-rocket"></i>
-                        <h3>Em Breve</h3>
-                        <p>Novos projetos estão sendo desenvolvidos. Fique de olho!</p>
-                    </div>
-                </div>
-            </div>
+        <div class="sk-card">
+          <i class="fab fa-python"></i>
+          <strong>Python</strong>
+          <span>Scripts & bots</span>
         </div>
-    </section>
+        <div class="sk-card">
+          <i class="fas fa-code"></i>
+          <strong>C++</strong>
+          <span>Sistemas & performance</span>
+        </div>
+        <div class="sk-card">
+          <i class="fas fa-hashtag"></i>
+          <strong>C#</strong>
+          <span>Aplicações .NET</span>
+        </div>
+        <div class="sk-card">
+          <i class="fab fa-html5"></i>
+          <strong>HTML5</strong>
+          <span>Estrutura web</span>
+        </div>
+        <div class="sk-card">
+          <i class="fab fa-css3-alt"></i>
+          <strong>CSS3</strong>
+          <span>Design & animações</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- CONTATO -->
-    <section id="contato">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Entre em <span class="highlight">Contato</span></h2>
-                <div class="section-line"></div>
+  <!-- ═══════ PROJETOS ═══════ -->
+  <section id="projetos" class="sec-alt">
+    <div class="sec-inner">
+      <div class="sec-tag">
+        <span class="tag-dot"></span> Portfólio
+      </div>
+      <h2 class="sec-title">Meus <span class="acc">Projetos</span></h2>
+
+      <div class="proj-grid">
+        <div class="proj-card">
+          <div class="proj-thumb">
+            <img src="portfolio-screenshot.png.png" alt="Portfólio Gabriel Dantas" />
+            <div class="proj-hover">
+              <a href="#inicio" class="btn btn-primary">
+                <i class="fas fa-eye"></i> Ver projeto
+              </a>
             </div>
-            <p class="contato-desc">
-                Tem um projeto em mente, uma oportunidade ou quer trocar uma ideia?
-                Fale comigo — responderei o mais rápido possível!
+          </div>
+          <div class="proj-body">
+            <div class="proj-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <h3>Portfólio Pessoal</h3>
+            <p>
+              Site portfólio com design Star Tech — fundo espacial animado,
+              glassmorphism, circuitos decorativos e layout responsivo completo.
             </p>
-            <div class="contact-cards">
-                <a href="https://wa.me/5519989660638?text=Ol%C3%A1!%20Vim%20pelo%20portf%C3%B3lio!"
-                   class="contact-card" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                </a>
-                <a href="mailto:gabrieldantas.gdbusiness@gmail.com" class="contact-card">
-                    <i class="fas fa-envelope"></i>
-                    <span>E-mail</span>
-                </a>
-                <a href="https://www.linkedin.com/in/gabriel-dantas-porteiro-8540231ab/"
-                   class="contact-card" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
-            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-logo">
-                <span class="logo-g">G</span><span class="logo-amp">&amp;</span><span class="logo-d">D</span>
-                <span class="logo-tech">TECH</span>
+        <div class="proj-card proj-soon">
+          <div class="proj-soon-inner">
+            <i class="fas fa-rocket"></i>
+            <h3>Em Desenvolvimento</h3>
+            <p>Novos projetos chegando em breve. Fique ligado!</p>
+            <div class="soon-dots">
+              <span></span><span></span><span></span>
             </div>
-            <p class="footer-copy">© 2025 Gabriel Dantas Porteiro — Todos os direitos reservados.</p>
-            <div class="footer-star">✦</div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- ═══════ CONTATO ═══════ -->
+  <section id="contato">
+    <div class="sec-inner sec-center">
+      <div class="sec-tag">
+        <span class="tag-dot"></span> Vamos trabalhar juntos
+      </div>
+      <h2 class="sec-title">Entre em <span class="acc">Contato</span></h2>
+      <p class="contato-sub">
+        Tem um projeto, uma ideia ou quer apenas trocar uma ideia?
+        Me chama — respondo rápido!
+      </p>
+
+      <div class="ct-cards">
+        <a href="https://wa.me/5519989660638?text=Ol%C3%A1!%20Vim%20pelo%20portf%C3%B3lio!"
+           class="ct-card" target="_blank" rel="noopener">
+          <div class="ct-icon"><i class="fab fa-whatsapp"></i></div>
+          <strong>WhatsApp</strong>
+          <span>(19) 98966-0638</span>
+        </a>
+        <a href="mailto:gabrieldantas.gdbusiness@gmail.com" class="ct-card">
+          <div class="ct-icon"><i class="fas fa-envelope"></i></div>
+          <strong>E-mail</strong>
+          <span>gabrieldantas.gdbusiness@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/gabriel-dantas-porteiro-8540231ab/"
+           class="ct-card" target="_blank" rel="noopener">
+          <div class="ct-icon"><i class="fab fa-linkedin"></i></div>
+          <strong>LinkedIn</strong>
+          <span>Gabriel Dantas Porteiro</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <div class="ft-inner">
+      <a href="#inicio" class="brand ft-brand">
+        <span class="brand-star">✦</span>
+        <span class="brand-name">Gabriel<span class="brand-accent">Dantas</span></span>
+      </a>
+      <p class="ft-copy">© 2025 Gabriel Dantas Porteiro — Todos os direitos reservados.</p>
+      <div class="ft-social">
+        <a href="https://wa.me/5519989660638" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:gabrieldantas.gdbusiness@gmail.com" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/gabriel-dantas-porteiro-8540231ab/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

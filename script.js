@@ -1,122 +1,147 @@
-/* G&D Tech — Star Tech Portfolio */
+/* ════════════════════════════════════════════
+   Gabriel Dantas — Star Tech Portfolio
+   ════════════════════════════════════════════ */
 
-// ===== STARFIELD =====
+/* ── STARFIELD ── */
 (function () {
-    const canvas = document.getElementById('starfield');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+  const canvas = document.getElementById('stars');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
 
-    function resize() {
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
+  let W, H, stars;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function makeStar() {
+    return {
+      x:     Math.random() * W,
+      y:     Math.random() * H,
+      r:     Math.random() * 1.3 + 0.2,
+      speed: Math.random() * 0.18 + 0.03,
+      op:    Math.random() * 0.6 + 0.2,
+      phase: Math.random() * Math.PI * 2,
+    };
+  }
+
+  function init() {
     resize();
-    window.addEventListener('resize', resize);
+    stars = Array.from({ length: 220 }, makeStar);
+  }
 
-    const STAR_COUNT = 200;
-    const stars = Array.from({ length: STAR_COUNT }, () => createStar());
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now() / 1000;
 
-    function createStar() {
-        return {
-            x:       Math.random() * canvas.width,
-            y:       Math.random() * canvas.height,
-            r:       Math.random() * 1.4 + 0.3,
-            speed:   Math.random() * 0.25 + 0.04,
-            opacity: Math.random() * 0.65 + 0.25,
-            phase:   Math.random() * Math.PI * 2,
-        };
+    for (const s of stars) {
+      const alpha = s.op * (0.6 + 0.4 * Math.sin(t * 1.2 + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(175, 215, 255, ${alpha})`;
+      ctx.fill();
+
+      s.y += s.speed;
+      if (s.y > H + 4) {
+        s.y = -4;
+        s.x = Math.random() * W;
+      }
     }
 
-    function tick() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const t = Date.now() / 1000;
+    requestAnimationFrame(draw);
+  }
 
-        stars.forEach(s => {
-            const op = s.opacity * (0.65 + 0.35 * Math.sin(t * 1.4 + s.phase));
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(180, 215, 255, ${op})`;
-            ctx.fill();
-
-            s.y += s.speed;
-            if (s.y > canvas.height + 4) {
-                s.y = -4;
-                s.x = Math.random() * canvas.width;
-            }
-        });
-
-        requestAnimationFrame(tick);
-    }
-    tick();
+  window.addEventListener('resize', () => { resize(); });
+  init();
+  draw();
 })();
 
-// ===== MOBILE NAV TOGGLE =====
+
+/* ── BURGER / MOBILE NAV ── */
 (function () {
-    const toggle = document.getElementById('navToggle');
-    const nav    = document.querySelector('nav');
-    if (!toggle || !nav) return;
+  const burger = document.getElementById('burger');
+  const nav    = document.getElementById('main-nav');
+  if (!burger || !nav) return;
 
-    toggle.addEventListener('click', () => {
-        nav.classList.toggle('open');
-        const icon = toggle.querySelector('i');
-        if (nav.classList.contains('open')) {
-            icon.className = 'fas fa-times';
-        } else {
-            icon.className = 'fas fa-bars';
-        }
-    });
+  burger.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
 
-    nav.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-            nav.classList.remove('open');
-            toggle.querySelector('i').className = 'fas fa-bars';
-        });
-    });
+  nav.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow = '';
+    })
+  );
 })();
 
-// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+
+/* ── SMOOTH SCROLL ── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (!target) return;
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    const el = document.querySelector(id);
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });
 
-// ===== HEADER SCROLL SHADOW =====
+
+/* ── HEADER SCROLL OPACITY ── */
 (function () {
-    const header = document.getElementById('header');
-    if (!header) return;
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
-            header.style.background = 'rgba(5, 8, 15, 0.96)';
-        } else {
-            header.style.background = 'rgba(5, 8, 15, 0.80)';
-        }
-    }, { passive: true });
+  const hd = document.getElementById('site-header');
+  if (!hd) return;
+  window.addEventListener('scroll', () => {
+    hd.style.background = window.scrollY > 50
+      ? 'rgba(8,12,24,0.97)'
+      : 'rgba(8,12,24,0.82)';
+  }, { passive: true });
 })();
 
-// ===== SCROLL REVEAL (fade-in on scroll) =====
+
+/* ── ACTIVE NAV LINK on scroll ── */
 (function () {
-    const items = document.querySelectorAll(
-        '.servico-card, .skill-card, .project-card, .stat-card, .contact-card'
-    );
+  const sections = document.querySelectorAll('section[id]');
+  const links    = document.querySelectorAll('#main-nav a');
 
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity    = '1';
-                entry.target.style.transform  = 'translateY(0)';
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
-
-    items.forEach(el => {
-        el.style.opacity   = '0';
-        el.style.transform = 'translateY(28px)';
-        el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
-        obs.observe(el);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`#main-nav a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
     });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => observer.observe(s));
+})();
+
+
+/* ── SCROLL REVEAL ── */
+(function () {
+  const targets = document.querySelectorAll(
+    '.srv-card, .sk-card, .proj-card, .num-card, .ct-card, ' +
+    '.sobre-body, .sobre-nums, .hero-text, .hero-visual'
+  );
+
+  targets.forEach(el => el.classList.add('reveal'));
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 60);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  targets.forEach(el => obs.observe(el));
 })();
